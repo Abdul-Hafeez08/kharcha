@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "87790986417",
+    "project_id": "uiuxapp-b561f",
+    "storage_bucket": "uiuxapp-b561f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87790986417:android:1f3b824d6db54084f2ae90",
+        "android_client_info": {
+          "package_name": "com.example.dailykharcha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb4tzEU1Ok8U9wO2GmCzNwj-PLxGPkoNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87790986417:android:b11839c5828b74edf2ae90",
+        "android_client_info": {
+          "package_name": "com.example.kharcha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb4tzEU1Ok8U9wO2GmCzNwj-PLxGPkoNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87790986417:android:346e8cf178e0b004f2ae90",
+        "android_client_info": {
+          "package_name": "com.example.tyamo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb4tzEU1Ok8U9wO2GmCzNwj-PLxGPkoNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
