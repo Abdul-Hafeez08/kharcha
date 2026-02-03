@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kharcha/utils/theme.dart';
+import 'package:kharcha/widgets/developer.dart';
+import 'package:kharcha/widgets/how.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/transaction_model.dart';
 import '../../models/user_model.dart';
 import '../../services/auth_service.dart';
@@ -26,6 +29,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 
   void _showAddPersonDialog(BuildContext context, String adminEmail) {
     final nameController = TextEditingController();
+
     // final phoneController = TextEditingController();
     showDialog(
       context: context,
@@ -284,13 +288,14 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
         actions: [
           ElevatedButton(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: const Text('Add Cash'),
             ),
             onPressed: () {
               _showAddCashDialog(context, adminEmail);
             },
           ),
+          SizedBox(width: 8),
         ],
       ),
       drawer: Drawer(
@@ -317,13 +322,19 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.person_add),
+              leading: Icon(
+                Icons.person_add,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               title: const Text('Add User'),
               onTap: () => _showAddPersonDialog(context, adminEmail),
             ),
 
             ListTile(
-              leading: const Icon(Icons.history_edu),
+              leading: Icon(
+                Icons.group,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               title: const Text('Global History'),
               onTap: () {
                 Navigator.pop(context); // Close Drawer
@@ -336,6 +347,52 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 );
               },
             ),
+            ListTile(
+              leading: Icon(
+                Icons.folder_open_rounded,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              title: const Text('How to Use'),
+              onTap: () async {
+                const String driveFolderUrl =
+                    'https://drive.google.com/drive/folders/11KmEt9yPf_bq1lLyrypP4O2KYPDktMcy?usp=sharing';
+                Navigator.pop(context);
+
+                final Uri uri = Uri.parse(driveFolderUrl);
+
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(
+                    uri,
+                    mode: LaunchMode
+                        .externalApplication, // Best chance for native app
+                  );
+                } else {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Could not open Google Drive folder'),
+                      ),
+                    );
+                  }
+                }
+              },
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.info_outline,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              title: const Text('About Developer'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AboutDeveloperPage()),
+                );
+              },
+            ),
+
             const Divider(),
             ListTile(
               leading: const Icon(Icons.logout, color: Colors.red),
